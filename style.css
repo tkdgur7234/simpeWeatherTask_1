@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: #C95E67;
+}
+
+/* TOP */
+.content {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-top {
+    padding: 50px;
+    border-radius: 4px;
+    height: 300px;
+    width: 500px;
+    background-color: #efefef;
+    margin: 20px 0 50px 0;
+}
+
+.content-top .city {
+    font-size: 29px;
+    color: #C95E67;
+    text-align: center;
+}
+
+.content-top .temp {
+    margin-top: 50px;
+    font-size: 65px;
+    color: #C95E67;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* BOTTOM */
+.content-bottom {
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    height: 100px;
+    width: 1100px;
+    background-color: #efefef;
+}
+
+/* values */
+.part1,
+.part2,
+.part3 div span {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+
+
+
+/* searchboxs */
+
+.search-boxs {
+    padding-top: 50px;
+    min-height: calc(100vh - 500px);
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.search-boxs div * {
+    text-align: center;
+}
+
+.search-boxs .forCity .input-btn input {
+    background-color: #efefef;
+    border: none;
+    border-radius: 5px;
+}
+
+.forCity .input-btn button,
+.forCoordinant button {
+    border: none;
+    border-radius: 5px;
+    background-color: #efefef;
+    height: 100%;
+    width: 35px;
+}
+
+.forCity .input-btn button i,
+.forCoordinant button i {
+    font-size: 100%;
+}
+
+.search-boxs .forCoordinant div input {
+    background-color: #efefef;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-boxs .forCurrentLocation div button {
+    width: 50px;
+    height: 50px;
+    background-color: #efefef;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-boxs .forCurrentLocation div button i {
+    font-size: 20px;
+}
