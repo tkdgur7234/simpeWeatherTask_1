@@ -90,8 +90,7 @@ function requestApiForCoordinant(value1, value2) {
                 else {
                     resetValues();
                     resetValidationForCorr();
-                    const utcStr = new Date();
-                    responseTime.innerText = utcStr.toLocaleTimeString();
+                    getResponseDate();
                     validationForCoor.innerText = "Coordinant not found"
                 }
             })
@@ -112,10 +111,10 @@ function weatherDetailsForCorr(info) {
             .then(result => getCountryNameForCorr(result, info));
     }
     else if (info.name != "") {
-        city.innerText = `${info.name},-----`
+        city.innerText = `${info.name},Country name not found`
     }
     else {
-        city.innerText = "----- ,----";
+        city.innerText = "City name not found ,Country name not found";
     }
     CoordinantAndCurrentInnerText(info)
 }
@@ -141,6 +140,7 @@ locationBtn.addEventListener('click', () => {
 
 function onSuccess(position) {
     const { latitude, longitude } = position.coords;
+    resetValidationForCurrLocation();
     fetch(`${url}weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric&lang=en`)
         .then(respons => respons.json())
         .then(result => weatherDetailsForCurrentPosition(result))
@@ -153,17 +153,16 @@ function onError(error) {
 }
 
 function weatherDetailsForCurrentPosition(info) {
-    resetValidationForCurrLocation();
     if (info.sys.country) {
         fetch(`https://restcountries.com/v3.1/alpha?codes=${info.sys.country}`)
             .then(response => response.json())
             .then(result => getCountryNameForCurrentLocation(result, info));
     }
     else if (info.name != "") {
-        city.innerText = `${info.name}`
+        city.innerText = `${info.name},Country name not found`
     }
     else {
-        city.innerText = "this is not country";
+        city.innerText = "City name not found ,Country name not found";
     }
     CoordinantAndCurrentInnerText(info);
 }
@@ -194,7 +193,7 @@ function resetValidationForCorr() {
     validationForName.innerText = "";
     validationForCurrLocation.innerText = "";
 }
-////////
+
 
 
 //Wind Direction
