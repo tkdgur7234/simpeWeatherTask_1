@@ -13,6 +13,7 @@ body {
     background-color: #C95E67;
 }
 
+
 /* TOP */
 .content {
     height: 500px;
@@ -119,3 +120,21 @@ body {
 .search-boxs .forCurrentLocation div button i {
     font-size: 20px;
 }
+/* 날씨에따라 변경되는 배경화면*/
+body.sunny {
+    background-image: url('sunny.jpg');
+}
+
+body.cloudy {
+    background-image: url('cloudy.jpg');
+}
+body.snow {
+    background-image: url('sunny.jpg');
+}
+body.Foggy {
+    background-image: url('sunny.jpg');
+}
+body.Rain {
+    background-image: url('sunny.jpg');
+}
+
