@@ -11,6 +11,7 @@ body {
     height: 100vh;
     width: 100%;
     background-color: #C95E67;
+    background-image: url(C:\Users\wjdgu\OneDrive\바탕화면\오픈소스소프트웨어\simpeWeatherTask\images\main_background.jpg);
 }
 
 
@@ -122,10 +123,8 @@ body {
 }
 /* 날씨에따라 변경되는 배경화면*/
 body.sunny {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어\simpeWeatherTask\images\main_background.jpg');
-    background-size: cover;
+    background-image: url('images\sunny.jpg');
 }
-
 
 body.cloudy {
     background-image: url('images\sunny.jpg');
@@ -137,6 +136,6 @@ body.Foggy {
     background-image: url('images\sunny.jpg');
 }
 body.Rain {
-    background-image: url('images\sunny.jpg');
+    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
 }
 
