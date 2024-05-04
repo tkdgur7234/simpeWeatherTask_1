@@ -55,11 +55,11 @@ function getSunriseSunset(lat, lon) {
         .then(result => {
             const sunriseTime = new Date(result.daily[0].sunrise * 1000).toLocaleTimeString();
             const sunsetTime = new Date(result.daily[0].sunset * 1000).toLocaleTimeString();
-            document.querySelector(".sunrise").innerText = `일출: ${sunriseTime}`;
-            document.querySelector(".sunset").innerText = `일몰: ${sunsetTime}`;
+            document.querySelector(".sunrise-time").innerText = `일출: ${sunriseTime}`;
+            document.querySelector(".sunset-time").innerText = `일몰: ${sunsetTime}`;
         });
-
-    }       
+}
+       
     function onSuccess(position) {
         const { latitude, longitude } = position.coords;
         resetValidationForCurrLocation();
