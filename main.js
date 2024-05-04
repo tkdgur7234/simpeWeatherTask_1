@@ -54,6 +54,7 @@ function getSunriseSunset(lat, lon) {
     fetch(`${url}onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${key}&units=metric&lang=en`)
         .then(response => response.json())
         .then(result => {
+            console.log(result);
             const sunriseTime = new Date(result.daily[0].sunrise * 1000).toLocaleTimeString();
             const sunsetTime = new Date(result.daily[0].sunset * 1000).toLocaleTimeString();
             document.querySelector(".sunrise-time").innerText = `일출: ${sunriseTime}`;
