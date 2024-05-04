@@ -94,6 +94,7 @@ function weatherDetailsForCity(result, info) {
     windSpeed.innerText = `${info.wind.speed} m/s`
     humidity.innerText = `${info.main.humidity}%`
     getDirection(info.wind.deg);
+
     // 배경화면 변경
     if (info.weather[0].main.toLowerCase() === 'clouds') {
         document.body.className = 'cloudy';
@@ -327,15 +328,4 @@ function getResponseDate() {
     const utcStr = new Date();
     responseTime.innerText = utcStr.toLocaleTimeString();
 }
-//배경화면 달라지게하기
-if (condition.innerText.toLowerCase() === 'clouds') {
-    document.body.className = 'cloudy';
-} else if (condition.innerText.toLowerCase() === 'clear') {
-    document.body.className = 'sunny';
-} else if (condition.innerText.toLowerCase() === 'snow') {
-    document.body.className = 'snowy';
-} else if (condition.innerText.toLowerCase() === 'rain') {
-    document.body.className = 'rainy';
-} else if (condition.innerText.toLowerCase() === 'fog') {
-    document.body.className = 'foggy';
-}
+
