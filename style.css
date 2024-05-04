@@ -122,8 +122,10 @@ body {
 }
 /* 날씨에따라 변경되는 배경화면*/
 body.sunny {
-    background-image: url('images\sunny.jpg');
+    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어\simpeWeatherTask\images\main_background.jpg');
+    background-size: cover;
 }
+
 
 body.cloudy {
     background-image: url('images\sunny.jpg');
