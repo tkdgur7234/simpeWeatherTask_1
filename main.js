@@ -35,7 +35,7 @@ function requestApiForCityName(name) {
                     resetValidationForCityName();
                     resetValues();
                     getResponseDate();
-                    validationForName.innerText = "City name not found";
+                    validationForName.innerText = "도시를 찾을 수 없습니다.";
                 }
             })
     }
@@ -43,7 +43,7 @@ function requestApiForCityName(name) {
         resetValidationForCityName();
         resetValues();
         responseTime.innerText = "";
-        validationForName.innerText = "Please write city name";
+        validationForName.innerText = "도시이름을 써주세요.";
     }
 
 }
@@ -98,7 +98,7 @@ function requestApiForCoordinant(value1, value2) {
     else {
         resetValues();
         resetValidationForCorr();
-        validationForCoor.innerText = "Please write lat and lot"
+        validationForCoor.innerText = "위도 경도를 써주세요."
     }
 
 }
