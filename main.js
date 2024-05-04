@@ -32,6 +32,7 @@ function requestApiForCityName(name) {
                     resetValidationForCityName();
                     getCountryName(result)
                     getResponseDate();
+                    getSunriseSunset(result.coord.lat, result.coord.lon);// 일출 및 일몰 정보 가져오기
                 }
                 else {
                     resetValidationForCityName();
@@ -112,6 +113,7 @@ function requestApiForCoordinant(value1, value2) {
                     resetValidationForCorr();
                     weatherDetailsForCorr(result)
                     getResponseDate();
+                    getSunriseSunset(value1, value2); // 일출 및 일몰 정보
                 }
                 else {
                     resetValues();
