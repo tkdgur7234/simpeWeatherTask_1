@@ -1,5 +1,5 @@
 const url = 'https://api.openweathermap.org/data/2.5/';
-const key = '45f006a9f6651c2bd89393c3e1976b8c';
+const key = '2641fb0de046da83c59c66db05d43182';
 let city = document.querySelector(".city");
 let temp = document.querySelector(".temp");
 let condition = document.querySelector(".condition");
