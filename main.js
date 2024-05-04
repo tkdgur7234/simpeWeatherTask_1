@@ -316,14 +316,14 @@ function getResponseDate() {
     responseTime.innerText = utcStr.toLocaleTimeString();
 }
 //배경화면 달라지게하기
-if (info.weather[0].main.toLowerCase() === 'clouds') {
+if (info.weather[0].main.toLowerCase() === 'Clouds') {
     document.body.className = 'cloudy';
-} else if (info.weather[0].main.toLowerCase() === 'clear') {
+} else if (info.weather[0].main.toLowerCase() === 'Clear') {
     document.body.className = 'sunny';
-} else if (info.weather[0].main.toLowerCase() === 'snow') {
+} else if (info.weather[0].main.toLowerCase() === 'Snow') {
     document.body.className = 'snowy';
-} else if (info.weather[0].main.toLowerCase() === 'rain') {
+} else if (info.weather[0].main.toLowerCase() === 'Rain') {
     document.body.className = 'rainy';
-} else if (info.weather[0].main.toLowerCase() === 'foggy') {
+} else if (info.weather[0].main.toLowerCase() === 'Foggy') {
     document.body.className = 'foggy';
 }
