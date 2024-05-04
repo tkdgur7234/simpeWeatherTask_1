@@ -11,6 +11,8 @@ let windSpeed = document.querySelector(".wind-speed");
 let humidity = document.querySelector(".humidity");
 let windDirection = document.querySelector(".wind-direction");
 let responseTime = document.querySelector(".date-response")
+let sunriseTime = document.querySelector(".sunrise-time");//일출
+let sunsetTime = document.querySelector(".sunset-time");//일몰
 
 
 
@@ -45,8 +47,33 @@ function requestApiForCityName(name) {
         responseTime.innerText = "";
         validationForName.innerText = "도시이름을 써주세요.";
     }
-
 }
+//일출 일몰 정보추가
+function getSunriseSunset(lat, lon) {
+    fetch(`${url}onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${key}&units=metric&lang=en`)
+        .then(response => response.json())
+        .then(result => {
+            const sunriseTime = new Date(result.daily[0].sunrise * 1000).toLocaleTimeString();
+            const sunsetTime = new Date(result.daily[0].sunset * 1000).toLocaleTimeString();
+            // 일출과 일몰 정보를 HTML에 추가
+            document.querySelector(".sunrise").innerText = `일출: ${sunriseTime}`;
+            document.querySelector(".sunset").innerText = `일몰: ${sunsetTime}`;
+        });
+
+    }       
+    function onSuccess(position) {
+        const { latitude, longitude } = position.coords;
+        resetValidationForCurrLocation();
+        fetch(`${url}weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric&lang=en`)
+            .then(response => response.json())
+            .then(result => {
+                weatherDetailsForCurrentPosition(result);
+                getSunriseSunset(latitude, longitude); // 일출 및 일몰 정보 가져오기
+            });
+        getResponseDate();
+    }
+    
+
 function getCountryName(info) {
     fetch(`https://restcountries.com/v3.1/alpha?codes=${info.sys.country}`)
         .then(response => response.json())
