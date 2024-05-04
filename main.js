@@ -55,7 +55,6 @@ function getSunriseSunset(lat, lon) {
         .then(result => {
             const sunriseTime = new Date(result.daily[0].sunrise * 1000).toLocaleTimeString();
             const sunsetTime = new Date(result.daily[0].sunset * 1000).toLocaleTimeString();
-            // 일출과 일몰 정보를 HTML에 추가
             document.querySelector(".sunrise").innerText = `일출: ${sunriseTime}`;
             document.querySelector(".sunset").innerText = `일몰: ${sunsetTime}`;
         });
