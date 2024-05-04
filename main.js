@@ -119,7 +119,7 @@ function requestApiForCoordinant(value1, value2) {
                     resetValues();
                     resetValidationForCorr();
                     getResponseDate();
-                    validationForCoor.innerText = "Coordinant not found"
+                    validationForCoor.innerText = "위도와 경도를 찾을 수 없습니다."
                 }
             })
     }
