@@ -122,19 +122,19 @@ body {
 }
 /* 날씨에따라 변경되는 배경화면*/
 body.sunny {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
+    background-image: url('images\sunny.jpg');
 }
 
 body.cloudy {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
+    background-image: url('images\sunny.jpg');
 }
 body.snow {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
+    background-image: url('images\sunny.jpg');
 }
 body.Foggy {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
+    background-image: url('images\sunny.jpg');
 }
 body.Rain {
-    background-image: url('C:\Users\wjdgu\OneDrive\바탕 화면\오픈소스소프트웨어');
+    background-image: url('images\sunny.jpg');
 }
 
