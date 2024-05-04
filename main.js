@@ -315,3 +315,15 @@ function getResponseDate() {
     const utcStr = new Date();
     responseTime.innerText = utcStr.toLocaleTimeString();
 }
+//배경화면 달라지게하기
+if (info.weather[0].main.toLowerCase() === 'clouds') {
+    document.body.className = 'cloudy';
+} else if (info.weather[0].main.toLowerCase() === 'clear') {
+    document.body.className = 'sunny';
+} else if (info.weather[0].main.toLowerCase() === 'snow') {
+    document.body.className = 'snowy';
+} else if (info.weather[0].main.toLowerCase() === 'rain') {
+    document.body.className = 'rainy';
+} else if (info.weather[0].main.toLowerCase() === 'foggy') {
+    document.body.className = 'foggy';
+}
