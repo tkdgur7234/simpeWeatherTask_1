@@ -101,11 +101,11 @@ function weatherDetailsForCity(result, info) {
     } else if (info.weather[0].main.toLowerCase() === 'clear') {
         document.body.className = 'sunny';
     } else if (info.weather[0].main.toLowerCase() === 'snow') {
-        document.body.className = 'snowy';
+        document.body.className = 'snow';
     } else if (info.weather[0].main.toLowerCase() === 'rain') {
-        document.body.className = 'rainy';
+        document.body.className = 'rain';
     } else if (info.weather[0].main.toLowerCase() === 'fog') {
-        document.body.className = 'foggy';
+        document.body.className = 'fog';
     }
 }
 
