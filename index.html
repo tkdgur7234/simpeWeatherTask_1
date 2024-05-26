@@ -93,11 +93,45 @@
             </div>
 
         </div>
+        <div>
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" value="37.7749">
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" value="-122.4194">
+            <button onclick="getSunriseSunset()">Get Times</button>
+        </div>
+        <div>
+            <p id="sunrise"></p>
+            <p id="sunset"></p>
+        </div>
     </div>
 
-
+    
 
     <script src="main.js"></script>
+    <script>
+        async function getSunriseSunset() {
+            const latitude = document.getElementById('latitude').value;
+            const longitude = document.getElementById('longitude').value;
+            const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&formatted=0`;
+
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    const sunrise = new Date(data.results.sunrise).toLocaleTimeString();
+                    const sunset = new Date(data.results.sunset).toLocaleTimeString();
+
+                    document.getElementById('sunrise').textContent = `Sunrise: ${sunrise}`;
+                    document.getElementById('sunset').textContent = `Sunset: ${sunset}`;
+                } else {
+                    console.error('Error:', response.status);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
 </body>
 
 </html>
