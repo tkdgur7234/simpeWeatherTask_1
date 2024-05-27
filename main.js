@@ -49,31 +49,19 @@ function requestApiForCityName(name) {
         validationForName.innerText = "도시이름을 써주세요.";
     }
 }
-//일출 일몰 정보추가
-function getSunriseSunset(lat, lon) {
-    fetch(`${url}onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${key}&units=metric&lang=en`)
+
+function onSuccess(position) {
+    const { latitude, longitude } = position.coords;
+    resetValidationForCurrLocation();
+    fetch(`${url}weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric&lang=en`)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
-            const sunriseTime = new Date(result.daily[0].sunrise * 1000).toLocaleTimeString();
-            const sunsetTime = new Date(result.daily[0].sunset * 1000).toLocaleTimeString();
-            document.querySelector(".sunrise-time").innerText = `일출: ${sunriseTime}`;
-            document.querySelector(".sunset-time").innerText = `일몰: ${sunsetTime}`;
+            weatherDetailsForCurrentPosition(result);
+            getSunriseSunset(latitude, longitude); // 일출 및 일몰 정보 가져오기
         });
+    getResponseDate();
 }
-       
-    function onSuccess(position) {
-        const { latitude, longitude } = position.coords;
-        resetValidationForCurrLocation();
-        fetch(`${url}weather?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric&lang=en`)
-            .then(response => response.json())
-            .then(result => {
-                weatherDetailsForCurrentPosition(result);
-                getSunriseSunset(latitude, longitude); // 일출 및 일몰 정보 가져오기
-            });
-        getResponseDate();
-    }
-    
+
 
 function getCountryName(info) {
     fetch(`https://restcountries.com/v3.1/alpha?codes=${info.sys.country}`)
@@ -328,4 +316,3 @@ function getResponseDate() {
     const utcStr = new Date();
     responseTime.innerText = utcStr.toLocaleTimeString();
 }
-const iconnnn = 'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400'

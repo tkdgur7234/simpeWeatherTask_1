@@ -80,11 +80,17 @@
             <div class="forCoordinant">
                 <h3>위도와 경도</h3>
                 <div>
+                    <label for="lat">위도:</label>
                     <input type="text" autocomplete="off" placeholder="Search..." id="lat">
+                    <label for="lon">경도:</label>
                     <input type="text" autocomplete="off" placeholder="Search..." id="lon">
-                    <button id="coordinantBtn"><i class="bi bi-search"></i></button>
+                    <button id="coordinantBtn" onclick="getSunriseSunset()"><i class="bi bi-search"></i> </button>
                 </div>
                 <div class="validationForCoor"></div>
+            </div>
+            <div>
+                <p id="sunrise"></p>
+                <p id="sunset"></p>
             </div>
             <div class="forCurrentLocation">
                 <h3>현재 위치</h3>
@@ -93,26 +99,18 @@
             </div>
 
         </div>
-        <div>
-            <label for="latitude">Latitude:</label>
-            <input type="text" id="latitude" value="37.7749">
-            <label for="longitude">Longitude:</label>
-            <input type="text" id="longitude" value="-122.4194">
-            <button onclick="getSunriseSunset()">Get Times</button>
-        </div>
-        <div>
-            <p id="sunrise"></p>
-            <p id="sunset"></p>
-        </div>
+
     </div>
 
-    
+
 
     <script src="main.js"></script>
+    //위도, 경도에 따른 일몰, 일출 시간
     <script>
+        
         async function getSunriseSunset() {
-            const latitude = document.getElementById('latitude').value;
-            const longitude = document.getElementById('longitude').value;
+            const latitude = document.getElementById('lat').value;
+            const longitude = document.getElementById('lon').value;
             const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&formatted=0`;
 
             try {
@@ -122,8 +120,8 @@
                     const sunrise = new Date(data.results.sunrise).toLocaleTimeString();
                     const sunset = new Date(data.results.sunset).toLocaleTimeString();
 
-                    document.getElementById('sunrise').textContent = `Sunrise: ${sunrise}`;
-                    document.getElementById('sunset').textContent = `Sunset: ${sunset}`;
+                    document.querySelector('.sunrise-time').textContent = sunrise;
+                    document.querySelector('.sunset-time').textContent = sunset;
                 } else {
                     console.error('Error:', response.status);
                 }
