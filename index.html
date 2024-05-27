@@ -11,6 +11,52 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .message {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #e6e6e6;
+        }
+        #chat-container {
+            width: 400px;
+            height: 600px;
+            border: 3px solid rgb(34, 31, 31);
+            display: flex;
+            flex-direction: column;
+            background-color: lightgray;
+        }
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        #user-input {
+            display: flex;
+            padding: 10px;
+        }
+        #user-input input {
+            flex: 1;
+            padding: 10px;
+            outline: none;
+        }
+        #user-input button {
+            border: none;
+            background-color: #ee6d04;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -101,11 +147,16 @@
         </div>
 
     </div>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <div id="user-input">
+            <input type="text" placeholder="메시지를 입력하세요..." />
+            <button>전송</button>
+        </div>
+    </div>
 
-
-
+    <script src="chat.js"></script>
     <script src="main.js"></script>
-    //위도, 경도에 따른 일몰, 일출 시간
     <script>
         
         async function getSunriseSunset() {
