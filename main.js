@@ -361,4 +361,3 @@ function sendWeatherToChatbot(weather) {
     };
     window.postMessage({ type: 'weather', data: message }, '*');
 }
-
