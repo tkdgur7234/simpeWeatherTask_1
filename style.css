@@ -27,11 +27,12 @@ body {
     padding: 50px;
     border-radius: 4px;
     height: 300px;
-    width: 500px;
+    width: 400px;
     background-color: rgba(255, 255, 255, 0.09);
     margin: 20px 0 50px 0;
     border: 2px solid #ffffff;
     backdrop-filter: blur(10px); /* 블러 효과 */
+    
 }
 
 .content-top .city {
@@ -48,38 +49,48 @@ body {
     text-align: center;
 }
 
-/* middle content styling */
-.additional-content {
-    padding: 50px;
-    border-radius: 4px;
-    height: 300px;
-    width: 500px;
-    background-color: rgba(255, 255, 255, 0.09);
-    margin: 20px 0 50px 0;
-    border: 2px solid #ffffff;
-    backdrop-filter: blur(10px); /* 블러 효과 */
-    display: inline-block;
-}
+
 
 /* middle content styling */
-.content-middle {
-    padding: 50px;
+.content-middle1 {
+    padding: 0px;
     border-radius: 4px;
     height: 200px;
-    width: 1100px;
+    width: 800px;
     background-color: rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(10px); /* 블러 효과 */
     margin: 20px 0 50px 0;
     border: 2px solid #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    float: left;
+    margin-right:90px;
 }
 
-.content-middle .temp {
-    margin-top: 50px;
-    font-size: 65px;
-    color: #C95E67;
-    font-weight: 600;
-    text-align: center;
+
+.content-middle2 {
+    padding: 0px;
+    border-radius: 4px;
+    height: 200px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(10px); /* 블러 효과 */
+    margin: 20px 0 50px 0;
+    border: 2px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    float: right;
 }
+.recent-searches h2 {
+    font-size: 30px; 
+    font-weight: 700;
+}
+.recent-searches tbody tr td {
+    font-size:18px; 
+    font-weight: 700;
+}
+
 /* Bottom content styling */
 .content-bottom {
     padding: 0 30px;
@@ -92,6 +103,7 @@ body {
     background-color: rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(10px); /* 블러 효과 */
     border: 2px solid #ffffff;
+    
 }
 
 /* Values */
@@ -225,6 +237,7 @@ body {
     cursor: pointer;
     
 }
+
 
 /* Weather backgrounds */
 body.sunny {
