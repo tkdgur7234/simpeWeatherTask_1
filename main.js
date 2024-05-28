@@ -13,8 +13,7 @@ let windDirection = document.querySelector(".wind-direction");
 let responseTime = document.querySelector(".date-response")
 let sunriseTime = document.querySelector(".sunrise-time");//일출
 let sunsetTime = document.querySelector(".sunset-time");//일몰
-
-
+let recentSearches = [];
 
 //City name  input
 const cityName = document.getElementById('cityName');
@@ -30,9 +29,14 @@ function requestApiForCityName(name) {
             .then(result => {
                 if (result.cod == 200) {
                     resetValidationForCityName();
+                    // 도시명을 최근 검색 기록에 추가
+                    addToRecentSearches(name);
+                    // 최근 검색 기록을 테이블에 업데이트
+                    updateRecentSearchesTable();
                     getCountryName(result)
                     getResponseDate();
                     getSunriseSunset(result.sys.sunrise, result.sys.sunset);// 일출 및 일몰 정보 가져오기
+                    sendWeatherToChatbot(result);   // 챗봇에 날씨 정보 보내기
                 }
                 else {
                     resetValidationForCityName();
@@ -50,6 +54,30 @@ function requestApiForCityName(name) {
     }
 }
 
+// 도시명을 최근 검색 기록에 추가하는 함수
+function addToRecentSearches(cityName) {
+    // 최근 검색 기록 배열에 도시명 추가
+    recentSearches.unshift(cityName);
+    // 최근 검색 기록이 5개를 초과하는 경우 가장 오래된 항목 제거
+    if (recentSearches.length > 5) {
+        recentSearches.pop();
+    }
+}
+
+// 최근 검색 기록 테이블을 업데이트하는 함수
+function updateRecentSearchesTable() {
+    const recentSearchesBody = document.getElementById('recentSearchesBody');
+    // 테이블 내용 초기화
+    recentSearchesBody.innerHTML = "";
+    // 최근 검색 기록 배열을 순회하며 테이블에 추가
+    recentSearches.forEach(city => {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.textContent = city;
+        row.appendChild(cell);
+        recentSearchesBody.appendChild(row);
+    });
+}
 
 function getCountryName(info) {
     fetch(`https://restcountries.com/v3.1/alpha?codes=${info.sys.country}`)
@@ -87,6 +115,7 @@ function weatherDetailsForCity(result, info) {
 }
 
 
+
 //Lat and Lon intputs
 
 const corrBtn = document.getElementById('coordinantBtn');
@@ -105,6 +134,7 @@ function requestApiForCoordinant(lat, lon) {
                     weatherDetailsForCorr(result);
                     getResponseDate();
                     getSunriseSunset(result.sys.sunrise, result.sys.sunset); // 일출 및 일몰 정보
+                    sendWeatherToChatbot(result);
                 } else {
                     resetValues();
                     resetValidationForCorr();
@@ -165,6 +195,7 @@ function onSuccess(position) {
                 weatherDetailsForCurrentPosition(result);
                 getResponseDate();
                 getSunriseSunset(result.sys.sunrise, result.sys.sunset); // 일출 및 일몰 정보
+                sendWeatherToChatbot(result);
             } else {
                 resetValues();
                 resetValidationForCurrLocation();
@@ -317,3 +348,17 @@ function getSunriseSunset(sunriseTimestamp, sunsetTimestamp) {
     document.querySelector('.sunrise-time').textContent = `${sunriseTime}`;
     document.querySelector('.sunset-time').textContent = `${sunsetTime}`;
 }
+// 챗봇에 날씨 정보 전달
+function sendWeatherToChatbot(weather) {
+    const message = {
+        city: weather.name,
+        temp_min: Math.round(weather.main.temp_min),
+        temp_max: Math.round(weather.main.temp_max),
+        humidity: weather.main.humidity,
+        wind_speed: weather.wind.speed,
+        weather: weather.weather[0].main,
+        feels_like: Math.round(weather.main.feels_like)
+    };
+    window.postMessage({ type: 'weather', data: message }, '*');
+}
+
